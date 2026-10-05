@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة التحدي الهندسي - المهندس عبد الله سامي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-welcome">
+
+    <div class="help-btn" id="helpBtn" title="تقييم المنصة"><i class="fa-solid fa-star"></i></div>
+
+    <!-- نافذة تقييم النجوم (فارغة وتفاعلية مع خانة تعليق) -->
+    <div class="modal-overlay" id="helpModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h2>تقييم المنصة</h2>
+            <p>منصة تحدي العقول الهندسية الصارمة</p>
+            <div class="rating-box">
+                <div class="star-rating-container" style="font-size: 28px; cursor: pointer; color: #cbd5e1; margin: 15px 0;">
+                    <i class="far fa-star" data-value="1"></i>
+                    <i class="far fa-star" data-value="2"></i>
+                    <i class="far fa-star" data-value="3"></i>
+                    <i class="far fa-star" data-value="4"></i>
+                    <i class="far fa-star" data-value="5"></i>
+                </div>
+                <!-- خانة كتابة التعليق -->
+                <textarea id="userCommentInput" placeholder="اكتب تعليقك أو ملاحظتك هنا يا فنان..." style="width: 100%; height: 80px; padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; margin-bottom: 15px; background: rgba(255,255,255,0.1); color: inherit;"></textarea>
+                
+                <button id="submitRating" class="btn-main" style="width: 100%;">إرسال التقييم ⭐</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة التحذير الهندسي -->
+    <div class="modal-overlay" id="engineerModal">
+        <div class="modal-content" style="text-align: center; border-color: var(--accent);">
+            <i class="fa-solid fa-triangle-exclamation" style="font-size: 50px; color: var(--accent); margin-bottom: 15px;"></i>
+            <h2 style="margin-bottom: 15px;">تنبيه هـام يا بشمهندس!</h2>
+            <p style="font-size: 16px; margin-bottom: 25px; color: #cbd5e1;">خلي بالك.. دي أسئلة مهندسين صارمة ومش أي حد يقدر يقفلها!</p>
+            <div style="display: flex; gap: 15px; flex-direction: column;">
+                <button id="btnIsEngineer" class="btn-main">ما أنا مهندس 🎓</button>
+                <button id="btnWillTry" class="btn-secondary">هحاول أبقى مهندس 🚀</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 1. شاشة الترحيب وتسجيل الدخول -->
+    <div class="page-screen active" id="screenWelcome">
+        <header style="text-align: center; margin-bottom: 20px;">
+            <div style="font-size: 26px; font-weight: bold; color: var(--accent);">⚙️ قاعة تحدي العقول الهندسية</div>
+            <h1 style="font-size: 20px; margin-top: 5px;">سجل بياناتك وابدأ الاختبار الصارم</h1>
+        </header>
+
+        <div class="setup-card">
+            <input type="text" id="playerName" placeholder="ادخل الاسم المستعار هنا يا بشمهندس...">
+
+            <div class="gender-selection">
+                <label><input type="radio" name="gender" value="male" checked> بشمهندس</label>
+                <label><input type="radio" name="gender" value="female"> بشمهندسة</label>
+            </div>
+
+            <div>
+                <p style="margin-bottom: 10px;">اختر لوجو المعركة:</p>
+                <div class="avatars-grid">
+                    <img src="https://api.dicebear.com/7.x/bottts/svg?seed=eng1" class="avatar-option selected" data-avatar="eng1" alt="avatar">
+                    <img src="https://api.dicebear.com/7.x/bottts/svg?seed=eng2" class="avatar-option" data-avatar="eng2" alt="avatar">
+                    <img src="https://api.dicebear.com/7.x/bottts/svg?seed=eng3" class="avatar-option" data-avatar="eng3" alt="avatar">
+                    <img src="https://api.dicebear.com/7.x/bottts/svg?seed=eng4" class="avatar-option" data-avatar="eng4" alt="avatar">
+                </div>
+            </div>
+
+            <button id="startJourneyBtn" class="btn-main">دخول التحدي</button>
+        </div>
+
+        <!-- النبذة الشخصية ودعوة بظهر الغيب مع الحديث الشريف -->
+        <div class="bio-container" style="max-width: 600px; margin: 30px auto; padding: 20px; background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; text-align: center; line-height: 1.8;">
+            <p style="font-size: 15px; color: #e2e8f0; margin-bottom: 15px;">
+                أنا عبد الله سامي عبد الله، طالب في كلية حاسبات و معلومات جامعة الصالحية الجديدة وفي طريقي لأكون مهندس برمجيات إن شاء الله، ولو حابب تُبدي برأيك اتفضل.
+            </p>
+            <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 15px 0;">
+            <p style="font-size: 14px; color: var(--accent); margin-bottom: 10px; font-weight: bold;">
+                نسألكم دعوة بظهر الغيب 🤍
+            </p>
+            <p style="font-size: 13px; color: #94a3b8; font-style: italic;">
+                قال رسول الله صلى الله عليه وسلم: «دعوة المرء المسلم لأخيه بظهر الغيب مستجابة، عند رأسه ملك موكل، كلما دعا لأخيه بخير، قال الملك الموكل به: آمين ولك بمثل».
+            </p>
+        </div>
+
+        <footer class="site-footer">
+            <p>جميع الحقوق محفوظة &copy; 2026 | إشراف المهندس <span>عبد الله سامي</span></p>
+        </footer>
+    </div>
+
+    <!-- 2. شاشة الأقسام الرئيسية -->
+    <div class="page-screen" id="screenCategories">
+        <header style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 20px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <img id="avatarCatScreen" src="" alt="Avatar" style="width: 50px; height: 50px; border-radius: 50%; background: #334155; border: 2px solid var(--primary);">
+                <div>
+                    <h4 id="nameCatScreen" style="margin: 0; font-size: 18px;"></h4>
+                    <span style="font-size: 13px; color: var(--text-muted);">النقاط الدقيقة: <strong id="userScoreDisplay" style="color: var(--accent);">0</strong> نقطة</span>
+                </div>
+            </div>
+            <button id="logoutBtn1" class="btn-secondary">تسجيل خروج</button>
+        </header>
+
+        <h2 style="margin-bottom: 15px;">اختر القسم الهندسي</h2>
+        <div class="sections-grid">
+            <div class="category-card" data-cat="islamic"><i class="fa-solid fa-mosque"></i><h3>أسئلة دينية</h3></div>
+            <div class="category-card" data-cat="sports"><i class="fa-solid fa-futbol"></i><h3>أسئلة كروية</h3></div>
+            <div class="category-card" data-cat="culture"><i class="fa-solid fa-brain"></i><h3>أسئلة ثقافيه</h3></div>
+            <div class="category-card" data-cat="entertainment"><i class="fa-solid fa-film"></i><h3>أفلام وأغاني مصرية</h3></div>
+        </div>
+
+        <footer class="site-footer">
+            <p>جميع الحقوق محفوظة &copy; 2026 | إشراف المهندس <span>عبد الله سامي</span></p>
+        </footer>
+    </div>
+
+    <!-- 3. شاشة مكتبة الكتب -->
+    <div class="page-screen" id="screenLibrary">
+        <header style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 20px;">
+            <button id="backToCategories" class="btn-secondary"><i class="fa-solid fa-arrow-right"></i> العودة للأقسام</button>
+            <h2 id="currentCategoryTitle" style="font-size: 18px; color: var(--accent);">مكتبة الكتب الهندسية</h2>
+        </header>
+
+        <div class="books-grid" id="booksContainer"></div>
+
+        <footer class="site-footer">
+            <p>جميع الحقوق محفوظة &copy; 2026 | إشراف المهندس <span>عبد الله سامي</span></p>
+        </footer>
+    </div>
+
+    <!-- 4. شاشة الأسئلة -->
+    <div class="page-screen" id="screenQuiz">
+        <header style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 20px;">
+            <button id="backToLibrary" class="btn-secondary"><i class="fa-solid fa-arrow-right"></i> العودة للمكتبة</button>
+            <span style="color: var(--accent); font-weight: bold;">السؤال <span id="currentQuestionNum">1</span> من 100</span>
+        </header>
+
+        <div style="background: rgba(15, 23, 42, 0.85); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+            <h3 id="questionText" style="margin-bottom: 20px; font-size: 19px; line-height: 1.6;">نص السؤال هنا؟</h3>
+            <div id="optionsContainer" class="options-container"></div>
+            <button id="nextQuestionBtn" class="btn-main hidden" style="margin-top: 20px;">السؤال التالي</button>
+        </div>
+
+        <footer class="site-footer">
+            <p>جميع الحقوق محفوظة &copy; 2026 | إشراف المهندس <span>عبد الله سامي</span></p>
+        </footer>
+    </div>
+
+    <!-- استدعاء ملف الأسئلة أولاً لتحميل البيانات -->
+    <script src="questions.js"></script>
+    <!-- استدعاء ملف التشغيل الرئيسي ثانياً -->
+    <script src="script.js"></script>
+</body>
+</html>
